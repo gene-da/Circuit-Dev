@@ -2,4 +2,4 @@
 *.asc     text eol=lf
 *.log     text eol=lf
 *.net     text eol=lf
-*.kicad*  text eol=lf
+*.cir     text eol=lf
