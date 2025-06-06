@@ -5,22 +5,37 @@ from matplotlib.ticker import FuncFormatter, LogLocator, NullFormatter
 
 from utils import metric_notation as mn
 
-def plot_ac_sweep(data, labels, title, xlimit, ylimit):
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+import numpy as np
+from utils import metric_notation as mn  # assuming this is where fm() and tm() are
+
+def plot_ac_sweep(data, labels, title, y_limit_high, x_limit_high, y_limit_low=-60, x_limit_low=10):
     plt.style.use(r'utils/theme/tokyonight.mplstyle')
     plt.figure(figsize=(10, 6))
+
     for (freq, trace), label in zip(data, labels):
         plt.plot(freq, trace, label=label)
 
     plt.xscale('log')
-    plt.xlim(10, mn.fm(xlimit))
-    plt.ylim(-60, mn.fm(ylimit))
+    plt.xlim(mn.fm(x_limit_low), mn.fm(x_limit_high))
+    plt.ylim(mn.fm(y_limit_low), mn.fm(y_limit_high))
+
+    # Axis labels
     plt.xlabel("Frequency")
     plt.ylabel("Amplitude (dB)")
     plt.title(title)
+
+    # --- Format x- and y-axis ticks using mn.tm() ---
+    ax = plt.gca()
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: mn.tm(x, 0)))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda y, _: mn.tm(y, 0)))
+
     plt.grid(True, which="both", linestyle='--', linewidth=0.5)
     plt.legend()
     plt.tight_layout()
     plt.show()
+
 
 import matplotlib.pyplot as plt
 import numpy as np

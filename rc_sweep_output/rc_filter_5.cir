@@ -1,0 +1,8 @@
+* RC Low-Pass Filter
+.option rawfmt=ps
+Vin in 0 AC 1
+R1 in out 200
+C1 out 0 16n
+.ac dec 100 10 100G
+.save V(out)
+.end

@@ -70,6 +70,12 @@ def mean_capicitance(inductance, lower_freq, upper_freq, step):
     print(f'Mean Cap: {mn.tm(mean)}F | Lower: {mn.tm(res_c(l, mn.fm(lower_freq)))}F | Upper: {mn.tm(res_c(l, mn.fm(upper_freq)))}F')
     
     return mean
+
 print()
 mean_capicitance(l, lower_freq, upper_freq, '10k')
 print()
+
+c_100k = res_c(l, '100k')
+
+print(f'Cap: {mn.tm(c_100k)}')
+print
