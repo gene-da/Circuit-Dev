@@ -1,6 +1,13 @@
 {
     "terminal.integrated.env.windows": {
       "PYTHONPATH": "${workspaceFolder}"
-    }
+    },
+    "a-file-icon-vscode.arrowTheme": "triangle",
+    "a-file-icon-vscode.folderTheme": "specific",
+    "a-file-icon-vscode.activeIconPacks": [
+      "volt",
+      "none"
+    ],
+    "a-file-icon-vscode.saturation": 0.7
   }
   
