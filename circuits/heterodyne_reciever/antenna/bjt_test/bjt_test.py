@@ -6,8 +6,8 @@ from spicelib.sim.sim_runner import SimRunner
 from spicelib.simulators.ngspice_simulator import NGspiceSimulator
 from spicelib.editor.spice_editor import SpiceEditor
 from spicelib.raw.raw_read import RawRead
-from utils import plotter as plot
-from utils import metric_notation as mn
+from tools import plotter as plot
+from tools import metric_notation as mn
 
 # Get the absolute path to the directory where this script lives
 script_dir = os.path.dirname(os.path.abspath(__file__))

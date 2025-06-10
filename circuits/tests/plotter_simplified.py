@@ -3,7 +3,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import numpy as np
-from utils.plotter import Plotter
+from tools.plotter import Plotter
 
 # Simulated data
 time = np.linspace(0, 100e-6, 1000)

@@ -1,0 +1,13 @@
+Warning: can't find the initialization file spinit.
+
+Note: Compatibility modes selected: ps lt ki a
+
+
+Circuit: * c:\program files\adi\ltspice\draft1.asc
+
+Netlist line no. 43:
+Undefined parameter [nxp]
+Netlist line no. 43:
+ Expression err: nxp)}
+Netlist line no. 43:
+Cannot compute substitute
