@@ -90,7 +90,7 @@ class SpiceProject:
                 raw = RawRead(path)
                 self.raw.append(SpiceData(name=f'Sim{count}', data=raw))
         
-        print(self.raw)
+        # print(self.raw)
                 
     def component(self, component: str, value: str=None):
         if value:
@@ -119,19 +119,24 @@ class SpiceProject:
 
 # Test Scripts
 project = SpiceProject('output', 'reciever.cir')
+project.netlist.set_parameter('fc', '450k')
 project.run()
-# project.component('fc', '1000k')
-# project.run()
-# project.component('fc', '1700k')
-# project.run()
+project.netlist.set_parameter('fc', '775k')
+project.run()
+project.netlist.set_parameter('fc', '1000k')
+project.run()
+project.netlist.set_parameter('fc', '1350k')
+project.run()
+project.netlist.set_parameter('fc', '1700k')
+project.run()
 project.read_raw()
 am = project.get_data('v(N001)', 'tran')
 signals = []
-labels = []
+labels = ['450k', '775k', '1000k', '1350k', '1700k']
+
 
 for signal in am:
     x, y = signal.data  # each .data is a (time, voltage) tuple
     signals.append((x, y))  # this is what plot.transient expects
-    labels.append(signal.name)
 
 plot.generic(signals, labels)

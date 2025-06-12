@@ -48,7 +48,7 @@ class Inductance:
         
         return mean
 
-l = '200u'
+l = '400u'
 lower_freq = '530k'
 upper_freq = '1700k'
 print()
