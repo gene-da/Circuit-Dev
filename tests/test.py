@@ -6,7 +6,7 @@ from spicelib.simulators.ngspice_simulator import NGspiceSimulator
 from spicelib.editor.spice_editor import SpiceEditor
 from spicelib.raw.raw_read import RawRead
 from spicelib.utils.sweep_iterators import sweep_log
-from utils import metric_notation as mn
+from tools import metric_notation as mn
 
 
 def plot_ac_sweep(data, labels, title):

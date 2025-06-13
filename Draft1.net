@@ -1,0 +1,65 @@
+* C:\Users\eugene.dann\Documents\dev\sims\Draft1.asc
+L1 0 ANT_IN 200µ
+L2 0 N011 200µ
+C1 N011 0 142.32p
+Q1 N007 N012 N015 0 BC547B
+C3 N012 N011 0.1µ
+C4 VCC N007 142.32p
+L3 N007 VCC 200µ
+L4 0 N006 200µ
+R1 VCC N012 47k
+R2 N012 0 10k
+R3 N015 0 220
+C6 N015 0 1n
+B1 ANT_IN N010 V=A*(1+m*sin(2*pi*fm*time))*sin(2*pi*fc*time)
+V1 VCC 0 12
+R4 N010 0 50
+L5 0 LO 200µ
+L6 0 N002 200µ
+L7 N005 0 200µ
+D1 N001 N002 BAT54
+D2 N005 N001 BAT54
+D3 N002 N004 BAT54
+D4 N004 N005 BAT54
+L8 0 RF 200µ
+L9 MIXER N001 200µ
+L10 N004 MIXER 200µ
+R5 IF1 0 50
+R6 N003 0 50
+R7 RF N006 10k
+Q2 N008 N013 0 0 BC547B
+C2 N013 MIXER 0.1µ
+C5 VCC N008 253.3p
+L11 N008 VCC 100µ
+R8 VCC N013 47k
+R9 N013 0 10k
+L12 0 IF 200µ
+V2 LO N003 SINE(0 2 1445k)
+D5 IF N009 1N5817
+C7 N009 0 50p
+R10 NC_01 N014 1k
+C8 N014 0 1µ
+R11 N009 0 5k
+.model D D
+.lib C:\Users\eugene.dann\AppData\Local\LTspice\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib C:\Users\eugene.dann\AppData\Local\LTspice\lib\cmp\standard.bjt
+.param fc=1000k
+.param fm=20k
+.param m=0.7
+.param A=0.001
+.tran 0 500u 100u 100n
+K1 L1 L2 {coupling}
+K3 L5 L6 {coupling}
+K4 L5 L7 {coupling}
+K5 L6 L7 {coupling}
+K6 L9 L8 {coupling}
+K7 L10 L8 {coupling}
+K8 L9 L10 {coupling}
+.param coupling=0.98
+K2 L3 L4 {coupling}
+* .step param fc list 600k 800k 1000k 1200k 1400k
+K9 L11 L12 {coupling}
+.backanno
+.end

@@ -6,7 +6,7 @@ from spicelib.sim.sim_runner import SimRunner
 from spicelib.simulators.ngspice_simulator import NGspiceSimulator
 from spicelib.editor.spice_editor import SpiceEditor
 from spicelib.raw.raw_read import RawRead
-from utils.plotter import Plotter
+from tools.plotter import Plotter
 
 # Output directory
 outdir = "./rc_sweep_output"

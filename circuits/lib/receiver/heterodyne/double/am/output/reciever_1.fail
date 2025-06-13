@@ -1,0 +1,26 @@
+Warning: can't find the initialization file spinit.
+  File included as:   .inc  C:\Users\eugene.dann\AppData\Local\LTspice\lib\cmp\standard.dio
+
+  File included as:   .inc  C:\Users\eugene.dann\AppData\Local\LTspice\lib\cmp\standard.bjt
+
+
+Note: Compatibility modes selected: ps lt ki a
+
+
+Circuit: * c:\users\eugene.dann\documents\dev\sims\draft1.asc
+
+Warning: Model issue on line 9 :
+  .model 1n5817 d(is=31.7u rs=.051 n=1.373 cjo=190p m=.3 eg=.69 xti=2 iave ...
+unrecognized parameter (iave) - ignored
+unrecognized parameter (vpk) - ignored
+
+Warning: Model issue on line 12 :
+  .model bat54 d(is=.1u rs=2.2 n=1 cjo=12p m=.3 eg=.69 xti=2 iave=300m vpk ...
+unrecognized parameter (iave) - ignored
+unrecognized parameter (vpk) - ignored
+
+Error on line 52 or its substitute:
+  .tran 0 500u 100u 100n
+TSTEP is invalid, must be greater than zero.
+    Simulation interrupted due to error!
+

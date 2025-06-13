@@ -8,6 +8,7 @@ from tools.spice.spicelib.editor.spice_editor import SpiceEditor
 from tools.spice.spicelib.raw.raw_read import RawRead
 from tools import metric_notation as mn
 from tools import plotter as plot
+import inspect
 
 @dataclass
 class SpiceData:
@@ -16,7 +17,8 @@ class SpiceData:
 
 class SpiceProject:        
     def __init__(self, output=None, netlist=None):
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        caller = inspect.stack()[1].filename
+        self.script_dir = os.path.dirname(os.path.abspath(caller))
         self.simulator = NGspiceSimulator.create_from(r'C:\Users\eugene.dann\Documents\dev\sims\ngspice.exe')
         self.netlist = None
         self.output = None
@@ -116,27 +118,34 @@ class SpiceProject:
             data_output.append(SpiceData(name=f'Sim {count}', data=(x, y)))
         
         return data_output
+    
+if __name__ == '__main__':
 
-# Test Scripts
-project = SpiceProject('output', 'reciever.cir')
-project.netlist.set_parameter('fc', '450k')
-project.run()
-project.netlist.set_parameter('fc', '775k')
-project.run()
-project.netlist.set_parameter('fc', '1000k')
-project.run()
-project.netlist.set_parameter('fc', '1350k')
-project.run()
-project.netlist.set_parameter('fc', '1700k')
-project.run()
-project.read_raw()
-am = project.get_data('v(N001)', 'tran')
-signals = []
-labels = ['450k', '775k', '1000k', '1350k', '1700k']
+    # Test Scripts
+    project = SpiceProject('output', 'reciever.cir')
+    project.netlist.set_parameter('fc', '450k')
+    project.run()
+    project.netlist.set_parameter('fc', '775k')
+    project.run()
+    project.netlist.set_parameter('fc', '1000k')
+    project.run()
+    project.netlist.set_parameter('fc', '1350k')
+    project.run()
+    project.netlist.set_parameter('fc', '1700k')
+    project.run()
+    project.read_raw()
+    am = project.get_data('v(N001)', 'tran')
+    signals = []
+    labels = ['450k', '775k', '1000k', '1350k', '1700k']
 
+    for freq in labels:
+        project.netlist.set_parameter('fc', freq)
+        project.run
 
-for signal in am:
-    x, y = signal.data  # each .data is a (time, voltage) tuple
-    signals.append((x, y))  # this is what plot.transient expects
+    project.read_raw()
 
-plot.generic(signals, labels)
+    for signal in am:
+        x, y = signal.data  # each .data is a (time, voltage) tuple
+        signals.append((x, y))  # this is what plot.transient expects
+
+    plot.generic(signals, labels)

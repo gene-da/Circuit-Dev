@@ -1,0 +1,45 @@
+Warning: can't find the initialization file spinit.
+
+Note: Compatibility modes selected: ps lt ki a
+
+
+Circuit: * c:\program files\adi\ltspice\draft1.asc
+
+binary raw file "C:/Users/eugene.dann/Documents/dev/sims/tools/spice/output/reciever_1.raw"
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+No. of Data Columns : 15  
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+ant_in                                       0
+n004                                         0
+n002                                        12
+vcc                                         12
+n001                                         0
+n003                                   1.95647
+n005                                   1.27271
+n006                                         0
+b1#branch                                    0
+l4#branch                                    0
+l3#branch                          -0.00576698
+l2#branch                                    0
+l1#branch                                    0
+v1#branch                          -0.00598067
+
+
+No. of Data Rows : 14010
+
+Total analysis time (seconds) = 0.0583428
+
+Total elapsed time (seconds) = 0.103 
+
+Total DRAM available = 32488.492 MB.
+DRAM currently available = 9259.031 MB.
+Maximum ngspice program size =   18.523 MB.
+Current ngspice program size =   18.523 MB.
+
